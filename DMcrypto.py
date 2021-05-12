@@ -31,9 +31,19 @@ lettre 2 = l
 lettre 3 = e
 lettre 4 = z
 
-Texte dechiffre 2: 
+Texte dechiffre 3: 
 
 BRAVO A L AIDE DE L INDICE VOUS AVEZ REUSSI A CASSER CE CODE ET A FINIR CE DEVOIR  LE DERNIER TEXTE EST POUR LES BRAVES  REGARDEZ VOUS DANS UN MIROIR  EN ETES VOUS UN ?
+
+Texte 4:
+
+kv qsteiadw qrs gqfmem zwrno c'rvjmq toirt cen bizeiw ofimw el Miwjhuz pvz ysqnvno rbes vdwvr pdt sdrffj à bvc iy evvjvdvis hd krjthrlen kfj vvzjxnzir u'vvffet et eiy sslfai ev wykmvs  if vjycsrin obj xvdwvr wzoj neupzr wh ca ptov nstt sjr grus zji yi uyuii b ui bpke tnjetp rj lz rpcedp fjt jqpzd wh cen pvrtmi trinsmt nz rpet zqbzmzrs huz pvrtmi trnn zwfim dtjati ev ksquvr ymf rjfd jum kfj bvzous fnvceqeqej
+
+
+clef 4: bravez
+
+JE VOUDRAIS PAS CREVER AVANT D AVOIR CONNU LES CHIENS NOIRS DU LEXIQUE QUI DORMENT SANS REVER LES SINGES C CUL NU DEVOREURS DE TROPIQUES LES ARAIGNEES D ARGENT AU NID TRUFFE DE 
+BULLES  JE VOUDRAIS PAS CREVER SANS SAVOIR SI LA LUNE SOUS SON FAUX AIR DE THUNE A UN COTE POINTU SI LE SOLEIL EST FROID SI LES QUATRE SAISONS NE SONT VRAIMENT QUE QUATRE SANS AVOIR ESSAYE DE PORTER UNE ROBE SUR LES GRANDS BOULEVARDS
 '''
 
 
@@ -124,11 +134,49 @@ def frequence(code_chiffre):
     return resultatTrie
 
 
+
+
+def sub(code_chiffre, alphabet_de_sub):
+    
+    alphabet = "abcdefghijklmnopqrstuvwxyz" 
+    result = ""
+    liste = []
+    for i in range(len(code_chiffre)):
+        liste.append(code_chiffre[i])
+
+
+
+    for i in range(len(liste)):
+        if liste[i] in alphabet:
+            #underscore n'est pas une lettre
+            #et va permettre de remplaccer les lettres non utilises
+            if liste[i] in alphabet_de_sub:
+                x = alphabet_de_sub.index(liste[i])
+                result += str(alphabet[x])
+        else:
+            result += str(liste[i])
+
+    return result
+
+
+
+def inverse(texte):
+    texte_inverse = []
+    long = len(texte)
+    for i in texte:
+        texte_inverse.append(texte[0 + long-1])
+        long -= 1
+
+    texte_inverse = "".join(texte_inverse)
+    return texte_inverse
+
+
 #prints
-print(decouper(code_chiffre, 38))
+print(sub(code_chiffre, "n_vcxwmlk__gfdsq_oiuy_____"))
+#print(decouper(code_chiffre, 38))
 print(frequence(code_chiffre))
-print(code_vigenere1(code_chiffre, clef))
-print(frequence(segments[0]))
-print(frequence(segments[1]))
-print(frequence(segments[2]))
-print(frequence(segments[3]))
+#print(code_vigenere1(code_chiffre, clef))
+#print(frequence(segments[0]))
+#print(frequence(segments[1]))
+#print(frequence(segments[2]))
+#print(frequence(segments[3]))
